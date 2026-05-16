@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug example: basic",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/debug/basic",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build - Debug (basic)"
+    },
+    {
+      "name": "Debug example: numbers",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/debug/numbers",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build - Debug (numbers)"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "reveal": "silent",
+    "panel": "shared"
+  },
+  "problemMatcher": {
+    "owner": "odin",
+    "source": "Odin",
+    "fileLocation": "absolute",
+    "pattern": {
+      "regexp": "^(.*?)(\\((\\d+):(\\d+)\\))\\s+(Syntax\\s+)?(Error|Warning):\\s+(.+)$",
+      "file": 1,
+      "line": 3,
+      "column": 4,
+      "severity": 6,
+      "message": 7
+    }
+  },
+  "tasks": [
+    {
+      "label": "Create build directory - Debug",
+      "type": "shell",
+      "linux": {
+        "command": "mkdir -p ./bin/debug"
+      }
+    },
+    {
+      "label": "Build - Debug (basic)",
+      "group": "build",
+      "dependsOn": "Create build directory - Debug",
+      "type": "process",
+      "command": "odin",
+      "args": [
+        "build",
+        "${workspaceFolder}/examples/basic",
+        "-debug",
+        "-vet",
+        "-strict-style",
+        "-out:basic"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/bin/debug"
+      },
+      "problemMatcher": "$odin"
+    },
+    {
+      "label": "Build - Debug (numbers)",
+      "group": "build",
+      "dependsOn": "Create build directory - Debug",
+      "type": "process",
+      "command": "odin",
+      "args": [
+        "build",
+        "${workspaceFolder}/examples/numbers",
+        "-debug",
+        "-vet",
+        "-strict-style",
+        "-out:numbers"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/bin/debug"
+      },
+      "problemMatcher": "$odin"
+    },
+    {
+      "label": "Build - Debug (examples)",
+      "dependsOn": [
+        "Build - Debug (basic)",
+        "Build - Debug (numbers)"
+      ],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Test - Unit",
+      "type": "process",
+      "group": "test",
+      "command": "odin",
+      "args": [
+        "test",
+        "${workspaceFolder}",
+        "-vet",
+        "-strict-style"
+      ],
+      "problemMatcher": "$odin"
+    }
+  ]
+}
