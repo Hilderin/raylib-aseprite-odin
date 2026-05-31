@@ -165,3 +165,7 @@ This project is licensed under the same zlib/libpng license used by the original
 - Original project: [`raylib-aseprite`](https://github.com/RobLoach/raylib-aseprite) by [Rob Loach](https://github.com/RobLoach)
 - This repository is an altered source version (a 100% Odin port)
 - Full license text: [`LICENSE`](./LICENSE)
+
+---
+
+*Built with curiosity, Python and a lot of AI.*
